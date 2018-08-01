@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import '../app/item/modal.less';
 
 @Component({
   selector: 'app-root',

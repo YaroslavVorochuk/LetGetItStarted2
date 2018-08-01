@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../services/item.service'
-import { pipe } from '../../../node_modules/@angular/core/src/render3/pipe';
+// import { pipe } from '../../../node_modules/@angular/core/src/render3/pipe';
 import { Item } from '../shared/item.model';
+import { ModalService } from '../services/modal.service'
 
 @Component({
   selector: 'app-item',
@@ -12,7 +13,8 @@ import { Item } from '../shared/item.model';
 export class ItemComponent implements OnInit {
 
   items: Item[] = [];
-  constructor(private itemService: ItemService) { }
+
+  constructor(private itemService: ItemService, private modalService: ModalService) { }
 
   ngOnInit() {
     this.itemService.getItems().subscribe(
@@ -34,9 +36,24 @@ export class ItemComponent implements OnInit {
           return 0;
       }
   });
+
   }
   randomPrice() {
     return Math.floor(Math.random() * 1500) + 20;
     
+  }
+
+  deleteItemFromList(i: number){
+    if(i > -1){
+        this.items.splice(i, 1);
+    }
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+}
+
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 }

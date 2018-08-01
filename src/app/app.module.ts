@@ -9,12 +9,15 @@ import {  MatCardModule } from '@angular/material';
 import { ItemService } from './services/item.service';
 import { SortingPipe } from './shared/sorting.pipe';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { ModalService } from './services/modal.service';
+import { ModalComponent } from '../directives/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
-    SortingPipe
+    SortingPipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import { FormsModule } from '../../node_modules/@angular/forms';
     MatCardModule,
     FormsModule
   ],
-  providers: [ItemService],
+  providers: [ItemService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
