@@ -43,17 +43,13 @@ export class ItemComponent implements OnInit {
     
   }
 
-  deleteItemFromList(i: number){
-    if(i > -1){
-        this.items.splice(i, 1);
-    }
-  }
-
-  openModal(id: string) {
+  openModal(id: any) {
     this.modalService.open(id);
 }
 
-  closeModal(id: string) {
+  closeModal(id: any) {
     this.modalService.close(id);
   }
+
+
 }
